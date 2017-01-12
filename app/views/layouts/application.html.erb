@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SampleRailsReact</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>BlogSample</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header page-scroll">
+      <%= link_to('Sample Blog', root_path, class:"navbar-brand" ) %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+            <li>
+              <%= link_to('<span class="glyphicon glyphicon-cog"></span> 設定'.html_safe, edit_user_registration_path) %>
+            </li>
+            <li>
+              <%= link_to('<span class="glyphicon glyphicon-off"></span> ログアウト'.html_safe, destroy_user_session_path, method: 'delete') %>
+            </li>
+        <% else %>
+            <li>
+              <%= link_to(' 登録', new_user_registration_path, class: 'glyphicon glyphicon-saved') %>
+            </li>
+            <li>
+              <%= link_to(' ログイン', new_user_session_path, class: 'glyphicon glyphicon-log-in') %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<%= yield %>
+</body>
 </html>

@@ -23,6 +23,7 @@ module SampleRailsReact
 
     # Rails g した時不要なファイルは生成しない
     config.generators do |g|
+
       g.test_framework  nil
       g.assets  false
       g.helper false

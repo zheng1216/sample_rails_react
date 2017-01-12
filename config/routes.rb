@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :follows
   resources :posts
   resources :feed, only: :index
-  resources :my_profile, only: [:create, :show, :update]
+  resource :my_profile, only: [:show, :update]
 
   root to: "home#index"
 end
