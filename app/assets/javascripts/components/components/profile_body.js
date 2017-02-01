@@ -8,7 +8,7 @@ export default class ProfileBody extends Component {
     let current = profileDetail.get('isMe') ? 'recentPosts' : 'userPosts';
     return (
       <div className='row body-margin'>
-        <Profiles />
+        <Profiles currentProfile={profileDetail}/>
         <Posts current={current}/>
       </div>
     )

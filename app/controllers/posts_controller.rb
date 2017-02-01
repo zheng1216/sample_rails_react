@@ -4,24 +4,24 @@ class PostsController < ApplicationController
 
   include ProfileFormatter
 
-  DEFAULT_POST_LIMIT = 30.freeze
+  DEFAULT_POST_LIMIT = 30
 
   def index
     return head :bad_request unless fetch_kind.present? && self.respond_to?(fetch_kind, true)
     posts = fetch_posts
     respond_to do |format|
-      format.json { render json: React.camelize_props(generate_response_with_profile(posts)) }
+      format.json { render json: React.camelize_props(generate_post_response_with_profile(posts)) }
     end
   end
 
   def show
     post = Post.find(params[:id])
-    @post_detail = generate_response_with_profile([post]).first
+    @post_detail = generate_post_response_with_profile([post]).first
     @profiles = following_user_profiles(post.user_id)
   end
 
   def create
-    @post = Post.create!(post_params.merge({user_id: current_user.id}))
+    @post = Post.create!(post_params.merge({ user_id: current_user.id }))
     redirect_to @post
   end
 

@@ -38,7 +38,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'browserify-rails'
 gem 'font-awesome-sass'
 gem 'react-rails'
-gem 'gon'
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'devise-i18n'
@@ -48,6 +47,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'pry-byebug'
+  gem 'rubocop', '~> 0.36.0', require: false
 end
 
 group :development do

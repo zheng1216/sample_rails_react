@@ -6,7 +6,7 @@ class FollowsController < ApplicationController
     followed_user_id = params[:followed_user_id]
     Follow.create!(
       followed_user_id: followed_user_id,
-      following_user_id: current_user.id
+      following_user_id: current_user.id,
     )
 
     head :created

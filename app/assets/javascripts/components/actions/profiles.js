@@ -47,11 +47,11 @@ export function fetchProfiles(userId, kind) {
   return dispatch => {
     const params = {
       kind: fetchKind.toLowerCase(),
-      userId: userId
+      user_id: userId
     };
 
     return Axios.get('/profiles.json', {params: params}).then((res) => {
-      return dispatch(setAction(res));
+      return dispatch(setAction(res.data));
     })
   };
 }

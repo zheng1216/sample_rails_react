@@ -3,13 +3,13 @@ class MyProfilesController < ApplicationController
 
   before_action :authenticate_user!, :find_my_profile
 
-  DEFAULT_LIMIT = 30.freeze
+  DEFAULT_LIMIT = 30
 
   def show
     @profile_detail = to_response(@my_profile)
     @profiles = following_user_profiles(@my_profile.user_id)
-    @posts = generate_response_with_profile(
-      Post.where(user_id: @my_profile.user_id).order(created_at: :desc).limit(DEFAULT_LIMIT)
+    @posts = generate_post_response_with_profile(
+      Post.where(user_id: @my_profile.user_id).order(created_at: :desc).limit(DEFAULT_LIMIT),
     )
   end
 
@@ -33,6 +33,6 @@ class MyProfilesController < ApplicationController
   end
 
   def my_profile_params
-    params.require(:profile).permit(:photo, :name,:company_name, :address)
+    params.require(:profile).permit(:photo, :name, :company_name, :address)
   end
 end

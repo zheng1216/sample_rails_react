@@ -16,7 +16,7 @@ export default class Posts extends Component {
       if (profile) {
         userId = profile.get('userId')
       }
-      this.props.fetchPosts(this.state.current, userId);
+      this.props.fetchPosts(userId, this.state.current);
     }
   }
 
@@ -27,7 +27,7 @@ export default class Posts extends Component {
   setCurrent(current) {
     this.setState({current: current});
     const profile = this.props.profiles.get('profileDetail');
-    this.props.fetchPosts(current, profile.get('userId'));
+    this.props.fetchPosts(profile.get('userId'), current);
   }
 
   get head() {

@@ -5,5 +5,4 @@ class Profile < ApplicationRecord
   validates :address, length: { maximum: 200 }
 
   DEFAULT_PHOTO = '/assets/profile/default_profile_photo.png'.freeze
-
 end

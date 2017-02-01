@@ -13,6 +13,8 @@ function setFollow(state, followedUserId, kind) {
   let followed = kind === FOLLOW ? true : false;
   if (state.getIn(['postDetail', 'userId']) === followedUserId) {
     return state.setIn(['postDetail', 'profile', 'followed'], followed)
+  } else {
+    return state;
   }
 }
 

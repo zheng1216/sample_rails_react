@@ -34,7 +34,7 @@ export function setPostDetail(postDetail) {
   }
 }
 
-export function fetchPosts(kind, userId) {
+export function fetchPosts(userId, kind) {
   let fetchKind, setAction;
   if (kind === 'followingPosts') {
     fetchKind = FETCH_FOLLOWING_USER_POSTS;

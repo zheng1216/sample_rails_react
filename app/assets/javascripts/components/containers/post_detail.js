@@ -10,17 +10,16 @@ export class PostDetail extends Component {
 
   render() {
     const postDetail = this.props.posts.get('postDetail');
-    const followingProfiles = this.props.profiles.get('followingProfiles');
     return (
       <div className='container-fluid'>
         <div className='post'>
-          <PostHead postDetail={postDetail} />
+          <PostHead postDetail={postDetail}/>
 
           <hr/>
 
           <div className='body-margin'>
             <PostContent postDetail={postDetail} deletePost={this.props.deletePost} />
-            <PostDetailProfile postDetail={postDetail} followingProfiles={followingProfiles}/>
+            <PostDetailProfile postDetail={postDetail}/>
           </div>
         </div>
       </div>

@@ -18,7 +18,7 @@ export default class PostDetailProfile extends Component {
             <Follow profile={postProfile} btnClass='post-detail-profile-follow-btn'/>
           </div>
         </div>
-        <Profiles/>
+        <Profiles currentProfile={postProfile} />
       </div>
     )
   }

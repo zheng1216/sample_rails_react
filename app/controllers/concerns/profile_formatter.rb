@@ -16,12 +16,12 @@ module ProfileFormatter
     :is_me,
   )
 
-  def generate_response_with_profile(targets)
-    user_ids = targets.map(&:user_id)
+  def generate_post_response_with_profile(posts)
+    user_ids = posts.map(&:user_id)
     profiles = ::Profile.where(user_id: user_ids)
-    targets.map do |target|
+    posts.map do |target|
       target_hash = target.as_json
-      target_hash['created_at'] = target.created_at.strftime('%Y年%m月%d日 %H:%M')
+      target_hash['created_at'] = target.created_at.strftime('%Y年 %m月 %d日 %H:%M')
       target_hash.merge(profile: to_response(profiles.find { |profile| profile.user_id == target.user_id }))
     end
   end
@@ -33,7 +33,8 @@ module ProfileFormatter
 
     followed = current_user.follows.exists?(followed_user_id: profile.user_id)
     is_me = current_user.id == profile.user_id
-    profile_hash.merge!({followed: followed, is_me: is_me})
+    profile_hash[:followed] = followed
+    profile_hash[:is_me] = is_me
     ProfileResponseStruct.new(*profile_hash.values).as_json
   end
 

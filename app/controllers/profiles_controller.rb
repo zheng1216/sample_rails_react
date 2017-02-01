@@ -3,13 +3,14 @@ class ProfilesController < ApplicationController
 
   include ProfileFormatter
 
-  DEFAULT_LIMIT = 30.freeze
+  DEFAULT_LIMIT = 30
 
   def index
     return head :bad_request unless self.respond_to?(fetch_kind, true)
     profiles = fetch_profiles
+    profiles_response = profiles.map{|profile| to_response(profile) }
     respond_to do |format|
-      format.json { render json: React.camelize_props(generate_response_with_profile(profiles)) }
+      format.json { render json: React.camelize_props(profiles_response) }
     end
   end
 
@@ -18,8 +19,8 @@ class ProfilesController < ApplicationController
     redirect_to('/my_profile') if user_signed_in? && current_user.id == profile.user_id
     @profile_detail = to_response(profile)
     @profiles = following_user_profiles(profile.user_id)
-    @posts = generate_response_with_profile(
-      Post.where(user_id: profile.user_id).order(created_at: :desc).limit(DEFAULT_LIMIT)
+    @posts = generate_post_response_with_profile(
+      Post.where(user_id: profile.user_id).order(created_at: :desc).limit(DEFAULT_LIMIT),
     )
   end
 
@@ -39,13 +40,13 @@ class ProfilesController < ApplicationController
 
   def fetch_following_profiles
     user = User.find(params[:user_id])
-    following_user_ids =  Follow.where(following_user_id: user.id).limit(DEFAULT_LIMIT).pluck(:followed_user_id)
+    following_user_ids = Follow.where(following_user_id: user.id).limit(DEFAULT_LIMIT).pluck(:followed_user_id)
     Profile.where(user_id: following_user_ids).order(created_at: :desc)
   end
 
-  def fetch_follower_profiles
+  def fetch_followed_profiles
     user = User.find(params[:user_id])
-    following_user_ids =  Follow.where(followed_user_id: user.id).limit(DEFAULT_LIMIT).pluck(:following_user_id)
+    following_user_ids = Follow.where(followed_user_id: user.id).limit(DEFAULT_LIMIT).pluck(:following_user_id)
     Profile.where(user_id: following_user_ids).order(created_at: :desc)
   end
 end

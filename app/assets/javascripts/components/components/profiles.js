@@ -25,8 +25,8 @@ export default class Profiles extends Component {
 
   setCurrent(current) {
     this.setState({current: current});
-    const profile = this.props.profiles.get('profileDetail');
-    this.props.fetchProfiles(current, profile.get('userId'));
+    const profile = this.props.currentProfile;
+    this.props.fetchProfiles(profile.get('userId'), current);
   }
 
   render() {
