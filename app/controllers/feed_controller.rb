@@ -1,7 +1,7 @@
 class FeedController < ApplicationController
   DEFAULT_FEED_LIMIT = 30.freeze
 
-  include ResponseFormatter
+  include ProfileFormatter
 
   def index
     posts = if context.present?
@@ -12,7 +12,7 @@ class FeedController < ApplicationController
               Post.all.limit(DEFAULT_FEED_LIMIT)
             end
     respond_to do |format|
-      format.json { render json: posts }
+      format.json { render json: generate_response_with_profile(posts) }
     end
   end
 

@@ -1,6 +1,37 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "home";
-@import "my_profile";
+@import "profile";
 @import "registration";
 @import "post";
+@import "devise";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "empty_content";
+@import "follow";
+@import "post_detail_profile";
+
+body
+{
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.nav {
+  .right-btn {
+    margin-right: 10px;
+  }
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.margin-center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.body-margin {
+  margin-left: 45px;
+  margin-right: 45px;
+}

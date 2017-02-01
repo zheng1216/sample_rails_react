@@ -35,6 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
 
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
+    add_index :users, :user_name,            unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
     execute("ALTER TABLE `users` CHANGE `id` `id` BIGINT AUTO_INCREMENT;")

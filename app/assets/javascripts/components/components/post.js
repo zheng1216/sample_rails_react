@@ -1,20 +1,27 @@
-import React, {Component, PropTypes} from 'react';
+import {Component} from 'react';
 
 export default class Post extends Component {
-  // componentWillMount() {
-  //   this.props.fetchFeed();
-  // }
+  toProfileDetail() {
+    const profileId = this.props.post.getIn(['profile', 'id']);
+    location.href = `/profiles/${profileId}`;
+  }
+
+  toPostDetail() {
+    const postId = this.props.post.get('id');
+    location.href = `/posts/${postId}`;
+  }
 
   render() {
-    console.log(this.props.posts);
+    const post = this.props.post;
+    const profile = post.get('profile');
     return (
-      <div className="post-preview">
-        <a href="post.html">
-          <h5 className="post-title">
-            I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
+      <div className='post-preview'>
+        <a href='javascript:void(0)' onClick={this.toPostDetail.bind(this)}>
+          <h5 className='post-title'>
+            {post.get('title')}
           </h5>
         </a>
-        <p className="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 18, 2014</p>
+        <p className='post-meta'><a href='javascript:void(0)' onClick={this.toProfileDetail.bind(this)} >{profile.get('name')}</a> {post.get('createdAt')}</p>
       </div>
     )
   }

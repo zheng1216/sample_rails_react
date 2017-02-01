@@ -3,8 +3,8 @@
 <head>
   <title>BlogSample</title>
   <%= csrf_meta_tags %>
-
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= Gon::Base.render_data %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
@@ -12,17 +12,30 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header page-scroll">
-      <%= link_to('Sample Blog', root_path, class:"navbar-brand" ) %>
+      <%= link_to('Sample Blog', root_path, class: "navbar-brand") %>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
             <li>
-              <%= link_to('<span class="glyphicon glyphicon-cog"></span> 設定'.html_safe, edit_user_registration_path) %>
+              <div class="right-btn">
+                <%= link_to(new_post_path, class: 'btn btn-success navbar-btn') do %>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>投稿
+                <% end %>
+              </div>
             </li>
-            <li>
-              <%= link_to('<span class="glyphicon glyphicon-off"></span> ログアウト'.html_safe, destroy_user_session_path, method: 'delete') %>
+            <li class="dropdown right-btn">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-cog"></span>
+                設定
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to('アカウント設定', edit_user_registration_path) %></li>
+                <li><%= link_to('プロフィール設定', edit_my_profile_path) %></li>
+                <li><%= link_to('ログアウト', destroy_user_session_path, method: 'delete') %></li>
+              </ul>
             </li>
         <% else %>
             <li>
@@ -37,5 +50,14 @@
   </div>
 </nav>
 <%= yield %>
+
+<hr>
+
+<footer>
+  <div class="container">
+    <p align="center">Copyright &copy; Your Website 2016</p>
+  </div>
+</footer>
+
 </body>
 </html>

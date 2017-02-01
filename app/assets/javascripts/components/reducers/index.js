@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
-import FeedReducer from './feed';
+import PostsReducer from './posts';
+import ProfilesReducer from './profiles';
 
 const rootReducer = combineReducers({
-  FeedReducer
+  PostsReducer,
+  ProfilesReducer
 });
 
 export default rootReducer;

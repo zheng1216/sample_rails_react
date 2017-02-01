@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {fetchFeed} from '../actions/feed';
-import Feed from '../components/feed';
+import {follow, unfollow} from '../actions/follow';
+import Follow from '../components/follow';
 
 function mapStateToProps() {
   return {}
@@ -10,9 +10,9 @@ function mapStateToProps() {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    {fetchFeed},
+    {follow: follow, unfollow: unfollow},
     dispatch
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feed);
+export default connect(mapStateToProps, mapDispatchToProps)(Follow);

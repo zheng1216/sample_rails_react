@@ -11,15 +11,11 @@ module SampleRailsReact
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
     config.browserify_rails.commandline_options = '-t babelify'
 
-    # image uploadをrails cでnamespace解決できないため、追加
+    # image uploadの設定
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
-
-    # deviseのjson API対応
-    config.to_prepare do
-      DeviseController.respond_to :html, :json
-    end
 
     # Rails g した時不要なファイルは生成しない
     config.generators do |g|

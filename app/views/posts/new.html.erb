@@ -1,0 +1,23 @@
+<div class="container post">
+  <div class="top">
+    <h2>新規投稿</h2>
+
+    <%= form_for(@post) do |f| %>
+
+        <div class='form-group'>
+          <%= f.text_field :title, class: 'form-control', placeholder: 'タイトル' %>
+        </div>
+
+        <div class='form-group'>
+          <%= f.text_area :content, class: 'form-control', size: '20x20', placeholder: '本文' %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit '作成', class: 'btn btn-primary' %>
+        </div>
+        <div>
+          <%= link_to "キャンセル", :back %>
+        </div>
+    <% end %>
+  </div>
+</div>

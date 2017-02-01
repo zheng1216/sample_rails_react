@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'browserify-rails'
+gem 'font-awesome-sass'
 gem 'react-rails'
 gem 'gon'
 gem 'devise'
@@ -43,10 +44,10 @@ gem 'bootstrap-sass'
 gem 'devise-i18n'
 gem 'carrierwave'
 
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'pry-byebug'
 end
 
 group :development do
