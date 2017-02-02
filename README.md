@@ -2,8 +2,8 @@
   
 # How to use:
  - bundle install --path vendor/bundler
- - rails rake db:create
- - rails rake db:migrate
+ - rails db:create
+ - rails db:migrate
  - npm install
- - rake db:seed
+ - rails db:seed
  - rails s
