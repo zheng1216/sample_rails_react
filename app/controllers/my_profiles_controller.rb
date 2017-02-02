@@ -8,9 +8,7 @@ class MyProfilesController < ApplicationController
   def show
     @profile_detail = to_response(@my_profile)
     @profiles = following_user_profiles(@my_profile.user_id)
-    @posts = generate_post_response_with_profile(
-      Post.where(user_id: @my_profile.user_id).order(created_at: :desc).limit(DEFAULT_LIMIT),
-    )
+    @posts = generate_post_response_with_profile(Post.order(created_at: :desc).limit(DEFAULT_LIMIT))
   end
 
   def edit
