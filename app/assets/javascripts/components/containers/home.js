@@ -8,7 +8,7 @@ export class Home extends Component {
   render() {
     return (
       <div className='container'>
-        <div className='row body-margin'>
+        <div className='row'>
           <FavoriteProfiles />
           <Posts current='recentPosts'/>
         </div>

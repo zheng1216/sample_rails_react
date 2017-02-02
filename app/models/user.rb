@@ -7,12 +7,13 @@ class User < ApplicationRecord
   validates :user_name, presence: true, uniqueness: true
 
   has_many :follows, class_name: ::Follow, foreign_key: 'following_user_id', dependent: :delete_all
+  has_many :followers, class_name: ::Follow, foreign_key: 'followed_user_id', dependent: :delete_all
   has_many :posts, class_name: ::Post, foreign_key: 'user_id', dependent: :delete_all
   has_one  :profile, class_name: ::Profile, foreign_key: 'user_id', dependent: :destroy
 
   after_create :create_profile
 
-  attr_reader :login
+  attr_accessor :login
 
   class << self
     def find_for_database_authentication(warden_conditions)

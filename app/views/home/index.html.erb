@@ -34,4 +34,4 @@
     </div>
   </div>
 </div>
-<%= react_component('HomeRoot', {posts: @posts.as_json, profiles: @favorite_profiles.as_json}, {prerender: true}) %>
+<%= react_component('HomeRoot', {posts: @posts, profiles: @favorite_profiles}, {prerender: true}) %>

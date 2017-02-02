@@ -1,5 +1,3 @@
-import 'whatwg-fetch'
-
 export const FETCH_USER_POSTS = 'FETCH_USER_POSTS';
 export const FETCH_FOLLOWING_USER_POSTS = 'FETCH_FOLLOWING_USER_POSTS';
 export const SET_POST_DETAIL = 'SET_POST_DETAIL';

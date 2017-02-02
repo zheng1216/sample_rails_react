@@ -3,9 +3,20 @@ import SimpleFormat from 'react-simple-format'
 
 export default class PostContent extends Component {
 
-  delete_post() {
+  deletePost() {
     const postId = this.props.postDetail.get('id');
     this.props.deletePost(postId);
+  }
+
+  get deleteBtn() {
+    const profile = this.props.postDetail.get('profile');
+    if (profile.get('isMe')) {
+      <div className='delete-btn'>
+        <button type='button' className='btn btn-danger' onClick={this.deletePost.bind(this)}>{`削除`}</button>
+      </div>
+    } else {
+      <div></div>
+    }
   }
 
   render() {
@@ -14,15 +25,13 @@ export default class PostContent extends Component {
     return (
       <div className='col-lg-8'>
         <div className='post-preview'>
-          <h5 className='post-title'>
+          <h5 className='post-title post-content'>
             <SimpleFormat text={postDetail.get('content')}/>
           </h5>
 
           <p className='post-meta'>{`投稿日 ${postDetail.get('createdAt')}`}</p>
         </div>
-        <div className='delete-btn'>
-          <button type='button' className='btn btn-danger' onClick={this.delete_post.bind(this)}>{`削除`}</button>
-        </div>
+        {this.deleteBtn}
       </div>
     )
   }

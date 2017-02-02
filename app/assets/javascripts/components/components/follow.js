@@ -28,7 +28,7 @@ export default class Follow extends Component {
     }
 
     let btnClass = this.props.btnClass ? this.props.btnClass : 'follow-btn';
-    if (this.props.profile.get('isMe') !== undefined && !this.isMe) {
+    if (this.props.profile.get('isMe') !== null && !this.isMe) {
       return (
         <div className={btnClass}>
           <button className={`btn ${followBtnClassName} btn-block`} type="submit"

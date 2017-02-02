@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 import {
-  SET_FAVORITE_PROFILES,
+  FETCH_FAVORITE_PROFILES,
   SET_PROFILE_DETAIL,
   FETCH_FOLLOWED_PROFILES,
   FETCH_FOLLOWING_PROFILES
@@ -53,8 +53,7 @@ function findIndexByUserId(state, kind, userId) {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case SET_FAVORITE_PROFILES:
-      console.log(state.set('favoriteProfiles', action.profiles).toJS());
+    case FETCH_FAVORITE_PROFILES:
       return state.set('favoriteProfiles', action.profiles);
     case SET_PROFILE_DETAIL:
       return state.set('profileDetail', action.profileDetail);
