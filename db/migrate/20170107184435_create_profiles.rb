@@ -1,6 +1,6 @@
 class CreateProfiles < ActiveRecord::Migration[5.0]
   def change
-    create_table :profiles do |t|
+    create_table :profiles, id: :primary_key, limit: 8 do |t|
       t.timestamps
       t.string :name, null: false
       t.string :photo
@@ -10,6 +10,5 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.integer :following_count, limit: 8, default: 0
       t.integer :followed_count, limit: 8, default: 0
     end
-    execute("ALTER TABLE `profiles` CHANGE `id` `id` BIGINT AUTO_INCREMENT;")
   end
 end

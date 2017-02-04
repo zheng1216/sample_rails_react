@@ -1,7 +1,8 @@
 class DeviseCreateUsers < ActiveRecord::Migration[5.0]
   def change
-    create_table :users do |t|
+    create_table :users, id: :primary_key, limit: 8 do |t|
       t.timestamps null: false
+
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -38,6 +39,5 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
     add_index :users, :user_name,            unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
-    execute("ALTER TABLE `users` CHANGE `id` `id` BIGINT AUTO_INCREMENT;")
   end
 end
