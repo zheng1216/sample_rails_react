@@ -8,7 +8,5 @@ class HomeController < ApplicationController
     @user = User.new
     @posts = generate_post_response_with_profile(Post.order(created_at: :desc).limit(DEFAULT_LIMIT))
     @favorite_profiles = Profile.order(followed_count: :desc).limit(DEFAULT_LIMIT).map{ |profile| to_response(profile)}
-  rescue => e
-    Rails.logger.error "error===============#{e.message}"
   end
 end
