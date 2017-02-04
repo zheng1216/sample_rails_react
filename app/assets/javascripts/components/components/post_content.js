@@ -11,11 +11,15 @@ export default class PostContent extends Component {
   get deleteBtn() {
     const profile = this.props.postDetail.get('profile');
     if (profile.get('isMe')) {
-      <div className='delete-btn'>
-        <button type='button' className='btn btn-danger' onClick={this.deletePost.bind(this)}>{`削除`}</button>
-      </div>
+      return(
+        <div className='delete-btn'>
+          <button type='button' className='btn btn-danger' onClick={this.deletePost.bind(this)}>{`削除`}</button>
+        </div>
+        );
     } else {
-      <div></div>
+      return(
+        <div></div>
+      );
     }
   }
 
