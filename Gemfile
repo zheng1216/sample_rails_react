@@ -8,8 +8,6 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
-# Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -43,8 +41,14 @@ gem 'bootstrap-sass'
 gem 'devise-i18n'
 gem 'carrierwave'
 
+group :production do
+  gem 'pg', '0.18.4'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Use mysql as the database for Active Record
+  gem 'mysql2', '>= 0.3.18', '< 0.5'
   gem 'byebug', platform: :mri
   gem 'pry-byebug'
   gem 'rubocop', '~> 0.36.0', require: false
