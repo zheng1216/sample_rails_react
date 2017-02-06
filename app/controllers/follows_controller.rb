@@ -1,5 +1,6 @@
 class FollowsController < ApplicationController
   protect_from_forgery except: [:create, :destroy]
+  # 認証の処理は、 only ではなく except で書いたほうが安全だと思います。
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def create

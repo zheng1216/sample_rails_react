@@ -1,4 +1,8 @@
 module ProfileFormatter
+  # コントローラーで処理を頑張りすぎている
+  # この処理は基本的に、view層で処理すべき
+  # 詳しい説明はこちらに
+  # http://qiita.com/mat_aki/items/3c743533c9f37a9106ee
   extend ActiveSupport::Concern
 
   ProfileResponseStruct = Struct.new(

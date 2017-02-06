@@ -21,6 +21,9 @@ class PostsController < ApplicationController
   end
 
   def create
+    # current_user.posts.create!(post_params)
+    # ログインユーザの posts を作成するというのが明確になる。
+    # 全体的に、モデルのメソッドチェーンを使わずに実装しているのに違和感があります。
     @post = Post.create!(post_params.merge({ user_id: current_user.id }))
     redirect_to @post
   end
@@ -44,6 +47,7 @@ class PostsController < ApplicationController
     params.permit(:kind)[:kind].try(:to_sym)
   end
 
+  # send はセキュリティー的に、問題になる可能性があるので極力使わない
   def fetch_posts
     __send__(fetch_kind)
   end
