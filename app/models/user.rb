@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :user_name, format: { with: /^[a-zA-Z0-9_\.]*$/, multiline: true }
   validates :user_name, presence: true, uniqueness: true
 
+  # follow の先のユーザを has_many through で取得できるようなモデル定義で書ける方が良い
   has_many :follows, class_name: ::Follow, foreign_key: 'following_user_id', dependent: :delete_all
   has_many :followers, class_name: ::Follow, foreign_key: 'followed_user_id', dependent: :delete_all
   has_many :posts, class_name: ::Post, foreign_key: 'user_id', dependent: :delete_all
