@@ -1,6 +1,4 @@
-module ProfileFormatter
-  extend ActiveSupport::Concern
-
+module ProfileFormatterHelper
   ProfileResponseStruct = Struct.new(
     :id,
     :created_at,
@@ -36,11 +34,5 @@ module ProfileFormatter
     profile_hash[:followed] = followed
     profile_hash[:is_me] = is_me
     ProfileResponseStruct.new(*profile_hash.values).as_json
-  end
-
-  def following_user_profiles(user_id)
-    following_user_ids = Follow.where(following_user_id: user_id).pluck(:followed_user_id)
-    return [] if following_user_ids.blank?
-    Profile.where(user_id: following_user_ids).map { |p| to_response(p) }
   end
 end

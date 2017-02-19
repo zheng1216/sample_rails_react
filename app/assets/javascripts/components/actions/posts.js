@@ -49,7 +49,7 @@ export function fetchPosts(userId, kind) {
     let params = {kind: fetchKind.toLowerCase()};
     if (userId) {
       params = Object.assign(params, {user_id: userId});
-      return Axios.get('/posts.json', {params: params}).then((res) => {
+      return Axios.get(`/users/${userId}/posts.json`, {params: params}).then((res) => {
         return dispatch(setAction(res.data));
       })
     }

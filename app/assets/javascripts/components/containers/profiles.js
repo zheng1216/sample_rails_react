@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {fetchProfiles} from '../actions/profiles';
+import {fetchFollowProfiles} from '../actions/follow';
 import Profiles from '../components/profiles';
 
 function mapStateToProps(state) {
@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    {fetchProfiles},
+    {fetchFollowProfiles},
     dispatch
   );
 }

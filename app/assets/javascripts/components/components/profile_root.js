@@ -3,7 +3,8 @@ import {Provider} from 'react-redux';
 import configureStore from '../store/configure_store';
 import ProfileDetailContainer from '../containers/profile_detail';
 import { setRecentPosts } from '../actions/posts';
-import { setFollowingProfiles, setProfileDetail } from '../actions/profiles';
+import { setFollowingProfiles } from '../actions/follow';
+import { setProfileDetail } from '../actions/profiles';
 
 const store = configureStore();
 
