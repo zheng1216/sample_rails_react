@@ -34,4 +34,4 @@
     </div>
   </div>
 </div>
-<%= react_component('HomeRoot', {posts: @posts, profiles: @favorite_profiles}, {prerender: true}) %>
+<%= react_component('HomeRoot', {posts: generate_post_response_with_profile(@posts), profiles: @favorite_profiles.map{ |profile| to_response(profile)}}, {prerender: true}) %>

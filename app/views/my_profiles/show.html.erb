@@ -1,1 +1,8 @@
-<%= react_component('ProfileRoot', {profile_detail: @profile_detail, profiles: @profiles, posts: @posts}, {prerender: true}) %>
+<%= react_component(
+        'ProfileRoot',
+        {profile_detail: to_response(@my_profile),
+         profiles: @following_users.map{|profile| to_response(profile)},
+         posts: generate_post_response_with_profile(@posts)
+        },
+        {prerender: true})
+%>

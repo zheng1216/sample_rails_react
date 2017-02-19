@@ -1,14 +1,11 @@
 class MyProfilesController < ApplicationController
-  include ProfileFormatter
-
   before_action :authenticate_user!, :find_my_profile
 
   DEFAULT_LIMIT = 30
 
   def show
-    @profile_detail = to_response(@my_profile)
-    @profiles = following_user_profiles(@my_profile.user_id)
-    @posts = generate_post_response_with_profile(Post.order(created_at: :desc).limit(DEFAULT_LIMIT))
+    @following_users = Profile.where(user: current_user.following_users)
+    @posts = Post.order(created_at: :desc).limit(DEFAULT_LIMIT)
   end
 
   def edit
@@ -27,7 +24,7 @@ class MyProfilesController < ApplicationController
   private
 
   def find_my_profile
-    @my_profile = Profile.find_by!(user_id: current_user.id)
+    @my_profile = current_user.profile
   end
 
   def my_profile_params

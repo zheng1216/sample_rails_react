@@ -8,7 +8,8 @@ export default class Post extends Component {
 
   toPostDetail() {
     const postId = this.props.post.get('id');
-    location.href = `/posts/${postId}`;
+    const userId = this.props.post.get('userId');
+    location.href = `/users/${userId}/posts/${postId}`;
   }
 
   render() {

@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :follows, class_name: ::Follow, foreign_key: 'following_user_id', dependent: :delete_all
   has_many :followers, class_name: ::Follow, foreign_key: 'followed_user_id', dependent: :delete_all
+  has_many :following_users, through: :follows
+  has_many :followed_users, through: :followers
   has_many :posts, class_name: ::Post, foreign_key: 'user_id', dependent: :delete_all
   has_one  :profile, class_name: ::Profile, foreign_key: 'user_id', dependent: :destroy
 

@@ -1,10 +1,7 @@
 import Immutable from 'immutable';
-import {
-  FETCH_FAVORITE_PROFILES,
-  SET_PROFILE_DETAIL,
-  FETCH_FOLLOWED_PROFILES,
-  FETCH_FOLLOWING_PROFILES
-} from '../actions/profiles';
+import { FETCH_FAVORITE_PROFILES, SET_PROFILE_DETAIL} from '../actions/profiles';
+
+import { FETCH_FOLLOWED_PROFILES, FETCH_FOLLOWING_PROFILES } from '../actions/follow';
 import {FOLLOW, UNFOLLOW} from '../actions/follow';
 
 const initialState = Immutable.fromJS({

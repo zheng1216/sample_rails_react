@@ -1,0 +1,1 @@
+React.camelize_props(generate_post_response_with_profile(@posts))

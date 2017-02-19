@@ -4,5 +4,7 @@ class Profile < ApplicationRecord
   validates :company_name, length: { maximum: 200 }
   validates :address, length: { maximum: 200 }
 
+  belongs_to :user, class_name: 'User'
+
   DEFAULT_PHOTO = '/assets/profile/default_profile_photo.png'.freeze
 end
